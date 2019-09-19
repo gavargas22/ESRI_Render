@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@types/arcgis-js-api": "^4.12.0",
+    "@types/gl-matrix": "^2.4.5",
+    "gl-matrix": "^3.1.0"
+  },
+  "devDependencies": {
+    "dojo-typings": "^1.11.9",
+    "prettier": "^1.18.2",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "name": "outside-plume-renderer",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "tsfix": "tslint --fix *.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

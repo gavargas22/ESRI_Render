@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS JavaScript Tutorials: Create a JavaScript starter app</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.12/"></script>
+    <script src="./js/seekops.js"></script>
+
+    <!-- External webgl raycaster -->
+    <script src="./app/webgl-volume-raycaster/js/gl-matrix-min.js"></script>
+    <script src="./app/webgl-volume-raycaster/js/webgl-util.js"></script>
+    <script src="./app/webgl-volume-raycaster/js/shader-srcs.js"></script>
+    <script src="./app/webgl-volume-raycaster/js/volume-raycaster.js"></script>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
+        window.dojoConfig = {
+            packages: [
+                {
+                    name: "app",
+                    location: locationPath + "/app"
+                },
+                {
+                    name: "gl-matrix",
+                    location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2",
+                    main: "gl-matrix-min"
+                }
+            ]
+        };
+    </script>
+
+</head>
+
+<body>
+    <script>
+        var app;
+        require([
+            "https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.0.3/js/calcite-web.min.js",
+            "app/Application",
+            "dojo/domReady!"
+        ]);
+    </script>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
