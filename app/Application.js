@@ -1,7 +1,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "esri/Map", "esri/geometry/SpatialReference", "esri/views/SceneView"], function (require, exports, Map_1, SpatialReference_1, SceneView_1) {
+define(["require", "exports", "./VolumeRenderer", "esri/Map", "esri/geometry/SpatialReference", "esri/views/SceneView", "esri/views/3d/externalRenderers"], function (require, exports, VolumeRenderer_1, Map_1, SpatialReference_1, SceneView_1, externalRenderers_1) {
     "use strict";
     Map_1 = __importDefault(Map_1);
     SpatialReference_1 = __importDefault(SpatialReference_1);
@@ -23,9 +23,12 @@ define(["require", "exports", "esri/Map", "esri/geometry/SpatialReference", "esr
                     atmosphereEnabled: false
                 }
             });
-            // this.view["renderContext"] = "webgl2"
+            this.view["renderContext"] = "webgl2";
             window["app"] = this.view;
             window["view"] = this.view;
+            // Instantiate external volume renderer
+            var renderer = new VolumeRenderer_1.VolumeRenderer(this.view);
+            externalRenderers_1.add(this.view, renderer);
         }
         return Application;
     }());

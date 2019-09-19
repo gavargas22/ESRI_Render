@@ -37,7 +37,7 @@
                 },
                 {
                     name: "gl-matrix",
-                    location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js",
+                    location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1",
                     main: "gl-matrix-min"
                 }
             ]
@@ -53,7 +53,7 @@
         var app;
         require([
             "https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.0.3/js/calcite-web.min.js",
-            "./app/Application.js",
+            "/app/Application.js",
             "dojo/domReady!"
         ], function (calcite, Application) {
             calcite.init();

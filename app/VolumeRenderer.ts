@@ -33,7 +33,7 @@ declare var selectVolume: (
 declare var selectColormap: (file: string, done: () => void) => void;
 declare var draw: (projView: mat4, eye: vec3) => void;
 
-const localUrl = "./plumes";
+const localUrl = "../plumes";
 
 glMatrix.ARRAY_TYPE = Float64Array;
 
@@ -41,14 +41,15 @@ type RenderContext = __esri.RenderContext;
 type ExternalRenderer = __esri.ExternalRenderer;
 
 export class VolumeRenderer implements ExternalRenderer {
-    constructor(private _view: SceneView, private _legendLayer: FeatureLayer) {}
+    // constructor(private _view: SceneView, private _legendLayer: FeatureLayer) {}
+    constructor(private _view: SceneView) {}
 
     setup(context: RenderContext): void {
         // Set up the state
         const renderer = new SimpleRenderer();
         renderer.visualVariables = [new ColorVariable({ field: "attr" })];
-        this._legendLayer.renderer = renderer;
-        // this.data = "heatmap";
+        // this._legendLayer.renderer = renderer;
+        this.data = "heatmap";
 
         setupGL(context.gl);
 
@@ -106,7 +107,7 @@ export class VolumeRenderer implements ExternalRenderer {
     }
 
     private _loadVolume(): void {
-        const filename = "heatmap_145x179x20x_uint8.raw";
+        const filename = "./plumes/heatmap_145x179x20x_uint8.raw";
 
         selectVolume(
             filename,
@@ -114,7 +115,7 @@ export class VolumeRenderer implements ExternalRenderer {
             () => {
                 if (this._updateColorMap) {
                     this._updateColorMap = false;
-                    selectColormap("matplotlib-plasma.png", () => {
+                    selectColormap("./plumes/colormaps/matplotlib-plasma.png", () => {
                         // this._updateLegend();
                         requestRender(this._view);
                     });

@@ -9,12 +9,12 @@ define(["require", "exports", "esri/renderers", "esri/geometry/SpatialReference"
     exports.dataSets = {
         Probabilities: ['heatmap', 0, 20, "ppm"]
     };
-    var localUrl = "./plumes";
+    var localUrl = "../plumes";
     gl_matrix_1.glMatrix.ARRAY_TYPE = Float64Array;
     var VolumeRenderer = /** @class */ (function () {
-        function VolumeRenderer(_view, _legendLayer) {
+        // constructor(private _view: SceneView, private _legendLayer: FeatureLayer) {}
+        function VolumeRenderer(_view) {
             this._view = _view;
-            this._legendLayer = _legendLayer;
             this._localOriginRender = gl_matrix_1.vec3.create();
             this._size = gl_matrix_1.vec3.create();
             this._timeStep = 1;
@@ -25,8 +25,8 @@ define(["require", "exports", "esri/renderers", "esri/geometry/SpatialReference"
             // Set up the state
             var renderer = new renderers_1.SimpleRenderer();
             renderer.visualVariables = [new ColorVariable_1.default({ field: "attr" })];
-            this._legendLayer.renderer = renderer;
-            // this.data = "heatmap";
+            // this._legendLayer.renderer = renderer;
+            this.data = "heatmap";
             setupGL(context.gl);
             // Origin of data
             var min = [97.799684, -30.356806, 1];
@@ -66,11 +66,11 @@ define(["require", "exports", "esri/renderers", "esri/geometry/SpatialReference"
         });
         VolumeRenderer.prototype._loadVolume = function () {
             var _this = this;
-            var filename = "heatmap_145x179x20x_uint8.raw";
+            var filename = "./plumes/heatmap_145x179x20x_uint8.raw";
             selectVolume(filename, this._size, function () {
                 if (_this._updateColorMap) {
                     _this._updateColorMap = false;
-                    selectColormap("matplotlib-plasma.png", function () {
+                    selectColormap("./plumes/colormaps/matplotlib-plasma.png", function () {
                         // this._updateLegend();
                         externalRenderers_1.requestRender(_this._view);
                     });
