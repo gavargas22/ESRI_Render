@@ -31,11 +31,11 @@
         var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
         window.dojoConfig = {
             packages: [
-                // {
-                //     name: "app",
-                //     location: locationPath + "/app",
-                //     // main: "Application"
-                // },
+                {
+                    // name: "app",
+                    location: "./app/Application.js",
+                    // main: "Application"
+                },
                 {
                     name: "gl-matrix",
                     location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1",
@@ -45,7 +45,7 @@
         };
     </script>
     <script src="https://js.arcgis.com/4.12/"></script>
-    <script src="/app/Application.js"></script>
+    <!-- <script src="/app/Application.js"></script> -->
 
 
 </head>
