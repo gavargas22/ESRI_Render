@@ -24,17 +24,19 @@ class Application {
                 heading: 0,
                 tilt: 53
             },
-            container: "view",
+            container: "viewDiv",
             viewingMode: "local",
             map: new Map({ basemap: 'satellite', layers: [] }),
             environment: {
-                background: { type: "color", color: [255, 244, 252, 1] },
+                background: { type: "color", color: [0, 0, 0, 1] },
                 starsEnabled: false,
                 atmosphereEnabled: false
             }
         });
 
-        // this.view["renderContext"] = "webgl"
+        // this.view["renderContext"] = "webgl2"
+        window["app"] = this.view;
+        window["view"] = this.view;
     }
 }
 

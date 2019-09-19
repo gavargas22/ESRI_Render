@@ -1,0 +1,8 @@
+version: '2'
+services:
+  apache2:
+      image: httpd:latest
+      volumes:
+          - .:/usr/local/apache2/htdocs/
+      ports:
+          - 8080:80

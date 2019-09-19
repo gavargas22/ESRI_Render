@@ -15,7 +15,8 @@
         ]
     },
     "include": [
-        "External-Volume-Renderer/**/*.ts"
+        // "External-Volume-Renderer/**/*.ts"
+        "**/*.ts"
     ],
     "exclude": [
         "node_modules"

@@ -6,11 +6,12 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>ArcGIS JavaScript Tutorials: Create a JavaScript starter app</title>
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.12/"></script>
-    <script src="./js/seekops.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <!-- <script src="./js/seekops.js"></script> -->
+    <!-- <script src="./app/Application.js"></script> -->
+    
     <!-- External webgl raycaster -->
-    <script src="./app/webgl-volume-raycaster/js/gl-matrix-min.js"></script>
+    <!-- <script src="./app/webgl-volume-raycaster/js/gl-matrix-min.js"></script> -->
     <script src="./app/webgl-volume-raycaster/js/webgl-util.js"></script>
     <script src="./app/webgl-volume-raycaster/js/shader-srcs.js"></script>
     <script src="./app/webgl-volume-raycaster/js/volume-raycaster.js"></script>
@@ -26,34 +27,39 @@
         }
     </style>
 
-    <!-- <script>
+    <script>
         var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
         window.dojoConfig = {
             packages: [
                 {
                     name: "app",
-                    location: locationPath + "/app"
+                    location: "./app/Application.js"
                 },
                 {
                     name: "gl-matrix",
-                    location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2",
+                    location: "https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js",
                     main: "gl-matrix-min"
                 }
             ]
         };
-    </script> -->
+    </script>
+    <script src="https://js.arcgis.com/4.12/"></script>
+
 
 </head>
 
 <body>
-    <!-- <script>
+    <script>
         var app;
         require([
             "https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.0.3/js/calcite-web.min.js",
-            "app/Application",
+            "./app/Application.js",
             "dojo/domReady!"
-        ]);
-    </script> -->
+        ], function (calcite, Application) {
+            calcite.init();
+            var app = new Application();
+        });
+    </script>
     <div id="viewDiv"></div>
 </body>
 
