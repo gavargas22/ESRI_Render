@@ -23,7 +23,7 @@ define(["require", "exports", "./VolumeRenderer", "esri/Map", "esri/geometry/Spa
                     atmosphereEnabled: false
                 }
             });
-            // this.view["renderContext"] = "webgl2"
+            this.view["renderContext"] = "webgl2";
             window["app"] = this.view;
             window["view"] = this.view;
             // Instantiate external volume renderer
