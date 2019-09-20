@@ -34,7 +34,7 @@ class Application {
             }
         });
 
-        // this.view["renderContext"] = "webgl2"
+        this.view["renderContext"] = "webgl2"
         window["app"] = this.view;
         window["view"] = this.view;
 
